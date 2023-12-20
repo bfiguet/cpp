@@ -22,9 +22,9 @@ void Phonebook::run_phonebook()
 	std::cout << std::endl;
 	std::cout << "Hello! Welcome on my Phonebook!" << std::endl;
 	std::cout << " You can use keywords ADD, SEARCH and EXIT" << std::endl << std::endl;
+	std::cout << "> What would you want to do? ";
 	while (1)
 	{
-		std::cout << "> What would you want to do? ";
 		getline(std::cin, str);
 		if (std::cin.eof())
 			return;
@@ -43,6 +43,7 @@ void Phonebook::_add()
 
 	this->Contact_list[i % 8].set_contact(i % 8);
 	i++;
+	std::cout << "> What would you want to do? ";
 }
 
 void Phonebook::_search()
@@ -85,6 +86,7 @@ void Phonebook::_search()
 			std::cout << "Invalid number" << std::endl << std::endl;
 		}
 	}
+	std::cout << "> What would you want to do? ";
 }
 
 int	main(void)
