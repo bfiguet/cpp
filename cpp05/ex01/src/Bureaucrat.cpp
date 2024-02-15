@@ -6,12 +6,12 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 09:48:46 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/02/15 12:18:55 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/02/15 12:31:21 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-
+//COPIER COLLER EXO 00 TOUT VERIFIER!!!!
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150){
 	try {
 		this->setGrade(150);
