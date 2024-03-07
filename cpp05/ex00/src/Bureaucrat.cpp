@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 09:48:46 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/02/24 12:35:42 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/02/29 10:32:36 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,6 @@ void	Bureaucrat::decrement(){
 	_grade++;
 	std::cout << "Bureaucrat " << _name << "'s grade has been decrement by 1 and now has grade is " << _grade << "." << std::endl;
 }
-
-//const char*	Bureaucrat::Exception::what() const throw(){
-//	return "Default Exception.\n";
-//}
 
 const char*	Bureaucrat::GradeTooLowException::what() const throw(){
 	return "Grade is too low.\n";

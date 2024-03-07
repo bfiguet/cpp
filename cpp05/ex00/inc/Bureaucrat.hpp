@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 09:48:53 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/02/24 11:58:46 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/02/29 10:32:05 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,6 @@ public:
 
 	void					increment();
 	void					decrement();
-
-	//class Exception : public std::exception {
-	//	public:
-	//		virtual const char* what() const throw();
-	//};
 
 	class GradeTooHighException : public std::exception {
 		public:
