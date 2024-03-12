@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:30:41 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/02/29 16:20:45 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/12 12:44:26 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,27 +45,22 @@ int		Form::getExecGrade()const{return _execGrade;}
 
 void	Form::beSigned(const Bureaucrat& sign){
 	if (_isSign == true)
-		throw(Form::signException());
-	else if (sign.getGrade() > getSignGrade())
-		throw(Form::GradeTooLowException());
-	else
-	{
-		setSatus(true);
-		std::cout << "Form " << _name << " has been signed by Bureaucrat " 
-			<< sign.getName() << "." << std::endl;
-	}
+		throw Form::signException();
+	if (sign.getGrade() <=  getSignGrade())
+		return setStatus(true);	
+	throw Form::GradeTooLowException();
 }
 
-void	Form::setSatus(bool const stat){ 
+void	Form::setStatus(bool const stat){ 
 	_isSign = stat;
 	std::cout << "Form " << _name << "'s signed status has been set to " << _isSign << "." << std::endl;
 }
 
-const char*	Form::signException::what() const throw(){return "The Form has already been signed";}
+const char*	Form::signException::what() const throw(){return "The Form has already been signed\n";}
 
-const char*	Form::GradeTooLowException::what() const throw(){ return "Grade is too low";}
+const char*	Form::GradeTooLowException::what() const throw(){return "Grade is too low\n";}
 
-const char*	Form::GradeTooHighException::what() const throw(){ return "Grade is too high";}
+const char*	Form::GradeTooHighException::what() const throw(){return "Grade is too high\n";}
 
 Form	&Form::operator=(const Form& src)
 {

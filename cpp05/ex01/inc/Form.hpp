@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:16:22 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/02/29 11:53:01 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/12 12:44:20 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ private:
 	bool				_isSign;
 public:
 	Form();
-	Form(std::string name, int signGrade, int execGrade);
+	Form(const std::string name, const int signGrade, const int execGrade);
 	Form(const Form& src);
 	~Form();
 
@@ -37,21 +37,21 @@ public:
 	int					getExecGrade()const;
 
 	void				beSigned(const Bureaucrat& sign);
-	void				setSatus(bool const stat);
+	void				setStatus(bool const stat);
 	
-	class signException {
+	class signException : public std::exception {
 		public:
-			virtual const char* what() const throw();
-	};
-	
-	class GradeTooHighException {
-		public:
-			virtual const char* what() const throw();
+			const char* what() const throw();
 	};
 
-	class GradeTooLowException {
+	class GradeTooHighException : public Form::signException {
 		public:
-			virtual const char* what() const throw();
+			const char* what() const throw();
+	};
+
+	class GradeTooLowException : public Form::signException {
+		public:
+			const char* what() const throw();
 	};
 };
 
