@@ -6,11 +6,11 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:40:46 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/13 17:58:15 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/16 13:45:47 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PresidentPardonForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(): AForm("Default Presidential Pardon Form", 25, 5){
 	_target = "Default";
@@ -27,7 +27,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& cpy
 	std::cout << "Constructor a copy of Presidential Pardon Form called for "<< _target << std::endl;
 }
 
-~PresidentialPardonForm::PresidentialPardonForm(){
+PresidentialPardonForm::~PresidentialPardonForm(){
 	std::cout << "Destructor Presidential Pardon Form called for " << _target << std::endl;
 }
 
@@ -41,10 +41,10 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 std::string	PresidentialPardonForm::getTarget()const{return _target;}
 
 void	PresidentialPardonForm::execute(const Bureaucrat& executor)const{
-	if (_getStatus())
-		throw AForm::UnsignedException();
-	if (executor.getGrade() > getGradeExec())
-		throw AForm::GradeToolowException();
+	if (getStatus())
+		throw UnsignedException();
+	if (executor.getGrade() > getExecGrade())
+		throw GradeTooLowException();
 	else
-		std::cout << executor.getName() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+		std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

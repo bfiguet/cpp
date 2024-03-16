@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 13:55:51 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/13 19:22:20 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/16 13:40:25 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define SHRUBBERYCREATIONFORM_HPP
 
 # include <iostream>
-# include "Bureaucrat.hpp"
 # include "AForm.hpp"
 
 class ShrubberyCreationForm : public AForm

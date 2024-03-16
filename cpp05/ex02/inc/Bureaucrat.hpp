@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 09:48:53 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/13 19:16:50 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/16 13:17:15 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ public:
 
 	void					increment();
 	void					decrement();
-	void					signForm(const AForm& form)const;
-	void					executeAForm(AForm const & form);
+	void					signForm(AForm& form);
+	void					executeAForm(const AForm& form) const;
 
 	class GradeTooHighException : public std::exception {
 		public:
-			const char* what() const throw();
+			virtual const char* what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception {
 		public:
-			const char* what() const throw();
+			virtual const char* what() const throw();
 	};
 	
 };

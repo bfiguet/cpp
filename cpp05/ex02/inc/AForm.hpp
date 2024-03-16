@@ -6,14 +6,14 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:13:33 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/13 19:21:51 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/16 13:17:30 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AFORM_HPP
 #define AFORM_HPP
 
-# include <iostream>
+# include <fstream>
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -42,24 +42,24 @@ public:
 	void				setStatus(bool const stat);
 	virtual void		execute(Bureaucrat const &executor) const = 0;
 	
-	class Exception : public std::exception {
+	class AlreadySignException : public std::exception {
 		public:
-			const char* what() const throw();
+			virtual const char* what() const throw();
 	};
 
 	class GradeTooHighException : public std::exception {
 		public:
-			const char* what() const throw();
+			virtual const char* what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception {
 		public:
-			const char* what() const throw();
+			virtual const char* what() const throw();
 	};
 
 	class UnsignedException : public std::exception {
 		public:
-			const char* what() const throw();
+			virtual const char* what() const throw();
 	};
 };
 

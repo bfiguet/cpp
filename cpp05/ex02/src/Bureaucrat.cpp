@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 09:48:46 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/13 19:17:40 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/16 14:07:08 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,20 +74,35 @@ const char*	Bureaucrat::GradeTooLowException::what() const throw(){return "Grade
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw(){return "Grade is too high.\n";}
 
-void	Bureaucrat::signForm(const AForm& form)const {
-	if (form.getStatus())
-		std::cout << "Bureaucrat " << _name << " could not sign Form " << form.getName() << "." << std::endl;
-	else
-		std::cout << "Bureaucrat " << _name << " signed Form " << form.getName() << "." << std::endl;
+void	Bureaucrat::signForm(AForm& form) {
+	try{
+		form.beSigned(*this);
+	}catch (AForm::GradeTooLowException &e){
+		std::cout << e.what() << form.getName() << " isn't signed by " << _name << std::endl;
+		return ;
+	} catch (AForm::AlreadySignException &e) {
+		std::cout << e.what() << form.getName() << " is already signed by " << _name << std::endl;
+		return ;
+	}
+	std::cout << "Bureaucrat " << _name << " signed " << form.getName() << std::endl;
+	//if (form.getStatus())
+	//	std::cout << "Bureaucrat " << _name << " could not sign Form " << form.getName() << "." << std::endl;
+	//else
+	//	std::cout << "Bureaucrat " << _name << " signed Form " << form.getName() << "." << std::endl;
 }
 
-void	Bureaucrat::executeAForm(AForm const & form){
-	if (form.getStatus() == false)
-		throw AForm::UnsignedException();
-	if (getGrade() > form.getExecGrade())
-		throw AForm::GradeTooLowException();
-	else
-		std::cout << "Bureaucrat " << _name << " has executed form " << form.getName() << "." << std::endl;
+void	Bureaucrat::executeAForm(const AForm& form) const{
+	try {
+		form.execute(*this);
+	}catch (std::exception& e){
+		std::cout << e.what() << form.getName() << " can't executed by " << _name << std::endl;
+	}
+	//if (form.getStatus() == false)
+	//	throw AForm::UnsignedException();
+	//if (getGrade() > form.getExecGrade())
+	//	throw AForm::GradeTooLowException();
+	//else
+	//	std::cout << "Bureaucrat " << _name << " has executed form " << form.getName() << "." << std::endl;
 }
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat &src){

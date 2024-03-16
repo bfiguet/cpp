@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:38:05 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/13 19:22:11 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/16 13:44:49 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 #define PRESIDENTIALPARDONFORM_HPP
 
 # include <iostream>
-#include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
-class PresidentialPardonForm
+class PresidentialPardonForm : public AForm
 {
 private:
 	std::string	_target;

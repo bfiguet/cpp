@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:30:41 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/13 19:00:40 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/16 13:15:07 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		AForm::getExecGrade()const{return _execGrade;}
 
 void	AForm::beSigned(const Bureaucrat& sign){
 	if (_isSign == true)
-		std::cout << "AForm " << _name << " has already been signed." << std::endl;
+		throw AForm::AlreadySignException();
 	if (sign.getGrade() <=  getSignGrade())
 		return setStatus(true);	
 	throw AForm::GradeTooLowException();
@@ -56,7 +56,7 @@ void	AForm::setStatus(bool const stat){
 	std::cout << "AForm " << _name << "'s signed status has been set to " << _isSign << "." << std::endl;
 }
 
-const char*	AForm::Exception::what() const throw(){return "Default AForm Exception.\n";}
+const char*	AForm::AlreadySignException::what() const throw(){return "Form is already signed.\n";}
 
 const char*	AForm::GradeTooLowException::what() const throw(){return "Grade is too low.\n";}
 

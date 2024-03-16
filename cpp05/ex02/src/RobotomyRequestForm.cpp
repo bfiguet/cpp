@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:10:05 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/13 17:35:50 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/16 13:43:52 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ RobotomyRequestForm::RobotomyRequestForm(): AForm("Default Robotory Request", 72
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string target): AForm("Robotory request", 72, 45){
 	_target = target;
-	std:cout << "Constructor Robotory Request Form called for " << _target < std::endl;
+	std::cout << "Constructor Robotory Request Form called for " << _target << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& cpy): AForm(cpy.getName(), cpy.getSignGrade(), cpy.getExecGrade()){
-	_target = target;
+	_target = cpy.getTarget();
 	std::cout << "Constructor a copy of Robotory Request Form called for " << _target << std::endl;
 }
 
-~RobotomyRequestForm::RobotomyRequestForm(){
+RobotomyRequestForm::~RobotomyRequestForm(){
 	std::cout << "Destructor Robotory Request Form called for " << _target << std::endl;
 }
 
@@ -42,9 +42,9 @@ std::string	RobotomyRequestForm::getTarget()const{ return _target;}
 
 void	RobotomyRequestForm::execute(const Bureaucrat& executor)const{
 	if (getStatus())
-		throw AForm::UnsignedException();
+		throw UnsignedException();
 	if (executor.getGrade() > getExecGrade())
-		throw AForm::GradeTooLowException();
+		throw GradeTooLowException();
 	else
 	{
 		static int	i;

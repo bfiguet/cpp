@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:05:34 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/13 19:22:15 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/16 13:42:52 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 # include <iostream>
-# include "Bureaucrat.hpp"
 # include "AForm.hpp"
 
-class RobotomyRequestForm
+class RobotomyRequestForm : public AForm
 {
 private:
 	std::string	_target;

@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:01:35 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/13 17:22:53 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/16 14:10:55 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,23 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 std::string	ShrubberyCreationForm::getTarget()const{return _target;}
 
 void		ShrubberyCreationForm::execute(const Bureaucrat& executor)const{
+	std::string		file = _target + "_shrubbery";
+	std::ofstream	o(file.c_str());
 	if (getStatus() == false)
-		throw AForm::UnsignedException();
+		throw UnsignedException();
 	if (executor.getGrade() > getExecGrade())
-		throw AForm::GradeTooLowException();
+		throw GradeTooLowException();
 	else
 	{
 		std::string tree = 
-		"  ,%&%&%,			 <3k	\n"
+		"  ,%&%&%,		 <3k	\n"
 		" ,%\\&%//%,		 \\//	\n"
-		",&%&%&%&%&%&,		@@@@@@	\n"
-		",%&%&//&\\%&,	   @@@@@@@@	\n"
+		",&%&%&%&%&%&,	@@@@@@	\n"
+		",%&%&//&\\%&,   @@@@@@@@	\n"
 		" ,%&\\%&//%,	   @@@@@@@@	\n"
-		"  ,&%&|#|%&%, 		@@@@@@	\n"
-		"      |#|			  ||	\n"
+		" ,&%&|#|%&%, 	@@@@@@	\n"
+		"     |#|		  ||	\n"
 		"__\\/_|#|_\\_//__\\/ ||_\\/\n";
-		std::string		file = _target + "_shrubbery";
-		std::ofstream	o(file.c_str());
 		if (o.is_open())
 			o << tree;
 		else
