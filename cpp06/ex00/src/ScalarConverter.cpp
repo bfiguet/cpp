@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 21:38:02 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/17 00:02:50 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/17 18:28:44 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,31 +43,31 @@ std::string	printDouble(double d){
 }
 
 void	convInt(int nb){
-	std::cout << "char : " << printChar(nb) << std::endl;
+	std::cout << "char : " << printChar(static_cast<char>(nb)) << std::endl;
 	std::cout << "int : " << nb << std::endl;
-	std::cout << "float : " << printFloat(nb) << std::endl;
-	std::cout << "double : " << printDouble(nb) << std::endl;
+	std::cout << "float : " << printFloat(static_cast<float>(nb)) << std::endl;
+	std::cout << "double : " << printDouble(static_cast<double>(nb)) << std::endl;
 }
 
 void	convFloat(float f){
-	std::cout << "char : " << printChar(f) << std::endl;
-	std::cout << "int : " << int(f) << std::endl;
+	std::cout << "char : " << printChar(static_cast<char>(f)) << std::endl;
+	std::cout << "int : " << static_cast<int>(f) << std::endl;
 	std::cout << "float : " << printFloat(f) << std::endl;
-	std::cout << "double : " << printDouble(f) << std::endl;
+	std::cout << "double : " << printDouble(static_cast<double>(f)) << std::endl;
 }
 
 void	convDouble(double d){
-	std::cout << "char : " << printChar(d) << std::endl;
-	std::cout << "int : " << int(d) << std::endl;
-	std::cout << "float : " << printFloat(d) << std::endl;
-	std::cout << "double : " << printDouble(d) << std::endl;
+	std::cout << "char : " << printChar(static_cast<char>(d)) << std::endl;
+	std::cout << "int : " << static_cast<int>(d) << std::endl;
+	std::cout << "float : " << printFloat(static_cast<float>(d)) << std::endl;
+	std::cout << "double : " << printDouble(static_cast<double>(d)) << std::endl;
 }
 
 void	convChar(char c){
 	std::cout << "char : " << c << std::endl;
-	std::cout << "int : " << int(c) << std::endl;
-	std::cout << "float : " << printFloat(c) << std::endl;
-	std::cout << "double : " << printDouble(c) << std::endl;
+	std::cout << "int : " << static_cast<int>(c) << std::endl;
+	std::cout << "float : " << printFloat(static_cast<float>(c)) << std::endl;
+	std::cout << "double : " << printDouble(static_cast<double>(c)) << std::endl;
 }
 
 bool	isFloat(const std::string& str){
@@ -123,5 +123,5 @@ void	ScalarConverter::converter(const std::string &str){
 	else if (isChar(str))
 		convChar(strtof(str.c_str(), &ptr));
 	else
-		std::cout << "is not valid" << std::endl;
+		std::cout << "not valid" << std::endl;
 }
