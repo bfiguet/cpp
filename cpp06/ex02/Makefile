@@ -6,11 +6,11 @@
 #    By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/15 09:48:00 by bfiguet           #+#    #+#              #
-#    Updated: 2024/03/16 19:42:21 by bfiguet          ###   ########.fr        #
+#    Updated: 2024/03/17 17:28:39 by bfiguet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= 2
+NAME		= ex02
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -g3 -std=c++98
 
