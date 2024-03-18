@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 16:16:19 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/17 16:59:05 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/18 12:40:31 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@
 #include <stdint.h>
 
 typedef struct Data{
-	int	val;
+	int		intVal;
+	char	charVal;
 }	Data;
 
 class Serializer
 {
 private:
-	Serializer();
+	Serializer(){};
 	Serializer(const Serializer &cpy){*this = cpy;};
-	~Serializer();
+	~Serializer(){};
 
 	Serializer	&operator=(const Serializer &src){(void)src; return *this;};
 

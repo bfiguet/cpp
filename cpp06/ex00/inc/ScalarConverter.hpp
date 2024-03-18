@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 20:44:27 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/17 16:50:55 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/18 12:27:40 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 class ScalarConverter
 {
 private:
-	ScalarConverter();
+	ScalarConverter(){};
 	ScalarConverter(const ScalarConverter &cpy){*this = cpy;};
-	~ScalarConverter();
+	~ScalarConverter(){};
 
 	ScalarConverter&	operator=(const ScalarConverter &src){(void)src; return *this;};
 public:	
