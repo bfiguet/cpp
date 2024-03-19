@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Whatever.hpp                                       :+:      :+:    :+:   */
+/*   Iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/17 17:46:15 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/19 13:09:54 by bfiguet          ###   ########.fr       */
+/*   Created: 2024/03/19 13:20:05 by bfiguet           #+#    #+#             */
+/*   Updated: 2024/03/19 13:43:02 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_HPP
-#define WHATEVER_HPP
-
-#include <iostream>
+#ifndef ITER_HPP
+#define ITER_HPP
 #include <string>
+#include <iostream>
+//#include <cstring>
 
 template<typename T>
 
-void	swap(T &s1, T &s2){
-	T s3;
-	s3 = s1;
-	s1 = s2;
-	s2 = s3;
-}
-
-template< typename T>
-
-T	min(T m1, T m2){
-	return m1 < m2 ? m1 : m2;
+void	Iter(T* tab, size_t len, void(*func)(T&)){
+	for (size_t i = 0; i < len; i++)
+		func(tab[i]);
 }
 
 template<typename T>
+void	print(T &val){
+	std::cout << val << " .";
+}
 
-T	max(T ma1, T ma2){
-	return ma1 > ma2 ? ma1 : ma2;
+void	upper(char &str){
+	str = toupper(str);
+	std::cout << str;
 }
 
 #endif
