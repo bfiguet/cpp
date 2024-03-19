@@ -6,11 +6,11 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:22:19 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/19 13:40:15 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/19 15:40:28 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Iter.hpp"
+#include "iter.hpp"
 
 int main(){
 	int			tabInt[5] = {12, 23, 34, 45, 56};

@@ -1,36 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Iter.hpp                                           :+:      :+:    :+:   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 13:20:05 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/19 13:43:02 by bfiguet          ###   ########.fr       */
+/*   Created: 2024/03/19 15:42:17 by bfiguet           #+#    #+#             */
+/*   Updated: 2024/03/19 15:42:42 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
-#include <string>
-#include <iostream>
-//#include <cstring>
-
-template<typename T>
-
-void	Iter(T* tab, size_t len, void(*func)(T&)){
-	for (size_t i = 0; i < len; i++)
-		func(tab[i]);
-}
-
-template<typename T>
-void	print(T &val){
-	std::cout << val << " .";
-}
-
-void	upper(char &str){
-	str = toupper(str);
-	std::cout << str;
-}
+#ifndef MUTANTSTACK_HPP
+#define MUTANTSTACK_HPP
 
 #endif

@@ -5,25 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 11:15:15 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/19 15:40:01 by bfiguet          ###   ########.fr       */
+/*   Created: 2024/03/19 15:38:29 by bfiguet           #+#    #+#             */
+/*   Updated: 2024/03/19 16:03:13 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "whatever.hpp"
+#include "easyfind.hpp"
 
-int main( void ) {
-	int a = 2;
-	int b = 3;
-	::swap( a, b );
-	std::cout << "a = " << a << ", b = " << b << std::endl;
-	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
-	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
-	std::string c = "chaine1";
-	std::string d = "chaine2";
-	::swap(c, d);
-	std::cout << "c = " << c << ", d = " << d << std::endl;
-	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
-	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+int main(void){
+	std::vector<int> a;
+
+	a.push_back(1);
+	a.push_back(2);
+	a.push_back(3);
+
+	std::cout << "SUCCESS" << std::endl;
+	easyfind(a, 1);
+	easyfind(a, 2);
+	easyfind(a, 3);
+	std::cout << std::endl;
+
+	std::cout << "FAILED" << std::endl;
+	easyfind(a, 0);
+	easyfind(a, 4);
+	easyfind(a, -1);
+	easyfind(a, 42);
+	std::cout << std::endl;
+
 	return 0;
 }
