@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:38:29 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/19 16:06:24 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/20 13:04:38 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main()
 	sp.addNumber(17);
 	sp.addNumber(9);
 	sp.addNumber(11);
-	std::cout << sp.shortestSpan() << std::endl;
-	std::cout << sp.longestSpan() << std::endl;
+	std::cout << "shortest: " << sp.shortestSpan() << std::endl;
+	std::cout << "longest: " << sp.longestSpan() << std::endl;
 	return 0;
 }

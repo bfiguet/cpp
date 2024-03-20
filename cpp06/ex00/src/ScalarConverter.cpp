@@ -6,11 +6,15 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 21:38:02 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/18 12:27:55 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/20 11:25:37 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+ScalarConverter::ScalarConverter(){};
+ScalarConverter::ScalarConverter(const ScalarConverter &cpy){*this = cpy;};
+ScalarConverter::~ScalarConverter(){};
 
 std::string	printChar(char c){
 	if (c >= 33 && c <= 126){

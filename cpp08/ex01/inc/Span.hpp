@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:41:09 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/19 16:20:55 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/20 13:02:36 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,20 @@ private:
 	std::vector<long>	_tab;
 
 public:
-	Span(): _n(0), _tab(0){};
-	Span(size_t const n): _n(n), _tab(0){};
-	Span(Span const & cpy){*this = cpy;};
+	Span();
+	Span(size_t const n);
+	Span(Span const & cpy);
 	~Span();
 
-	Span& operator=(Span const & src);
+	Span & operator=(Span const &src);
 
-	size_t				getN()const{return _n;};
-	std::vector<long>	getTab()const{return _tab;};
+	size_t				getN()const;
+	std::vector<long>	getTab()const;
 	size_t				getSpan(long const n1, long const n2);
 
 	void				addNumber(int const n);
 	void				addNums();
+	std::vector<long>	initFunc(std::vector<long>sort);
 	size_t				shortestSpan();
 	size_t				longestSpan();
 

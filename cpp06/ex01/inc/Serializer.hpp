@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 16:16:19 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/18 12:40:31 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/20 11:30:06 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ typedef struct Data{
 class Serializer
 {
 private:
-	Serializer(){};
-	Serializer(const Serializer &cpy){*this = cpy;};
-	~Serializer(){};
+	Serializer();
+	Serializer(const Serializer &cpy);
+	~Serializer();
 
-	Serializer	&operator=(const Serializer &src){(void)src; return *this;};
+	Serializer & operator=(const Serializer &src);
 
 public:
 	static uintptr_t	serialize(Data* ptr);
