@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:41:31 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/20 13:12:16 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/20 13:20:00 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,11 @@ void	Span::addNums(){
 		throw Span::noAdd();
 	try {
 		for (size_t i = 0; i < _n; i++){
-			long n = static_cast<long>(std::rand());
+			size_t n = size_t(std::rand());
 			_tab.push_back(n);
+			std::cout << n << " | ";
 		}
+		std::cout << std::endl;
 	} catch (const std::exception& e){
 		std::cout << e.what() << std::endl;
 	}
