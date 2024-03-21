@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:51:14 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/20 18:37:26 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/21 19:11:45 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include <sstream>
 
 #define DATA "data.csv"
-#define SEP ","
+//#define SEP ","
 #define PIPE "|"
 
 #define ERR_ARG					"Need 1 argument like ./btc input.txt"
@@ -39,19 +39,20 @@
 class BitcoinExchange
 {
 private:
-	std::string							_fileName;
-	std::ifstream						_file;
-	std::ifstream						_db;
+	//std::string							_fileName;
+	//std::ifstream						_file;
+	//std::ifstream						_db;
 	std::map<std::string, std::string>	_data;
+	bool								_err;
 	
 	bool								isValidDate(std::string const & date);
 	void								printDb(std::map<std::string, std::string> & data);
 	bool								isValidVal(std::string const val);
 	std::string							getVal(std::string const & date);
-	std::string							previousDate(std::string const & date);
-							
+	std::string							previousDate(std::string const & date);					
+	void								printErr(std::string str);
 public:
-	BitcoinExchange(int const ac, std::string const *fileName);
+	BitcoinExchange();
 	BitcoinExchange(BitcoinExchange const &copy);
 	~BitcoinExchange();
 
