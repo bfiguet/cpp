@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:27:42 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/21 19:15:36 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/22 15:14:50 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,57 @@ BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &src){
 	return *this;
 }
 
-bool	BitcoinExchange::isValidDate(std::string const &date){
-	//ICIIII
-}
-
-void	BitcoinExchange::printDb(std::map<std::string, std::string> & data);
-
-bool	BitcoinExchange::isValidVal(std::string const val){
-	//ICIII
-}
-
-std::string	BitcoinExchange::getVal(std::string const & date);
-
-std::string	BitcoinExchange::previousDate(std::string const & date);
-
 void	BitcoinExchange::printErr(std::string str){
 	_err = true;
 	throw(BitcoinExchange::Err(str));
 	return ;
+}
+
+bool	BitcoinExchange::isValidDate(std::string const &date){
+	if (date.length() != 10 || date[4] != '-' || date[7] != '-')
+		return false;
+	int year = atoi((date.substr(0,4)).c_str());
+	int month = atoi((date.substr(5,2)).c_str());
+	int	day = atoi((date.substr(8,2)).c_str());
+
+	if (year < 2009 || year > 2024)
+		return false;
+	if (month < 1 || month > 12)
+		return false;
+	if (day < 1 || day > 31)
+		return false;
+	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+		return false;
+	if (month == 2 && (year == 2016 || year == 2020 || year == 2024) && day > 29)
+		return false;
+	if (month == 2 && (year != 2016 || year != 2020 || year != 2024) && day > 28)
+		return false;
+	return true;
+}
+
+bool	BitcoinExchange::isValidVal(std::string const val){
+	if (isdigit(val.c_str()))
+		return true;
+	return false;
+}
+
+std::string	BitcoinExchange::getVal(std::string const & date){
+	std::map<std::string, std::string>::const_iterator it;
+	std::string res;
+
+	it = _data.find(date);
+	if (it != _data.end())
+		return (*it).second;
+	else{
+		std::string prevDate = previousDate(date);
+		return getVal(prevDate);
+	}
+}
+
+bool	BitcoinExchange::getErr()const{return _err};
+
+std::string	BitcoinExchange::previousDate(std::string const &date){
+	
 }
 
 std::map<std::string, std::string>	BitcoinExchange::setData(){
@@ -99,4 +132,3 @@ std::map<std::string, std::string>	BitcoinExchange::getData() const{ return _dat
 
 void	BitcoinExchange::execBtc(std::string const & file);
 
-bool	BitcoinExchange::getErr()const;
