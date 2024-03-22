@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:51:14 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/22 15:08:50 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/22 15:30:43 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,21 @@ private:
 	std::map<std::string, std::string>	_data;
 	bool								_err;
 
-	bool								isValidDate(std::string const & date);
-	bool								isValidVal(std::string const val);
-	std::string							getVal(std::string const & date);
-	std::string							previousDate(std::string const & date);					
+	bool								isValidDate(std::string const &date);
+	bool								isValidVal(std::string const &val);
+	std::string							getVal(std::string const &date);
+	//std::string							previousDate(std::string const & date);					
 	void								printErr(std::string str);
 public:
 	BitcoinExchange();
 	BitcoinExchange(BitcoinExchange const &copy);
 	~BitcoinExchange();
 
-	BitcoinExchange & 					operator=(BitcoinExchange const & src);
+	BitcoinExchange & 					operator=(BitcoinExchange const &src);
 
 	std::map<std::string, std::string>	setData();
 	std::map<std::string, std::string>	getData() const;
-	void								execBtc(std::string const & file);
+	void								execBtc(std::string const &file);
 	bool								getErr()const;
 
 	class Err: public std::exception{

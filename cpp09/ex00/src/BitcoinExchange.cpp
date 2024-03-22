@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:27:42 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/22 15:14:50 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/22 16:56:05 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ BitcoinExchange::BitcoinExchange(BitcoinExchange const &copy){
 	*this = cpy;
 }
 
-BitcoinExchange::~BitcoinExchange();
+BitcoinExchange::~BitcoinExchange(){};
 
 BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &src){
 	if (this != &src){
@@ -65,35 +65,50 @@ bool	BitcoinExchange::isValidDate(std::string const &date){
 	return true;
 }
 
-bool	BitcoinExchange::isValidVal(std::string const val){
+bool	BitcoinExchange::isValidVal(std::string const &val){
 	if (isdigit(val.c_str()))
 		return true;
 	return false;
 }
 
-std::string	BitcoinExchange::getVal(std::string const & date){
+std::map<std::string, std::string>	BitcoinExchange::getData() const{ return _data;}
+
+std::string	BitcoinExchange::getVal(std::string const &date){
 	std::map<std::string, std::string>::const_iterator it;
-	std::string res;
 
 	it = _data.find(date);
 	if (it != _data.end())
 		return (*it).second;
 	else{
-		std::string prevDate = previousDate(date);
-		return getVal(prevDate);
+		std::string	prevVal = "";
+		for (std::map<std::string, std::string>::const_iterator i)
+		return prevVal;
 	}
 }
 
+//static std::string findClosestKey(const std::map<std::string, float>& myMap, const std::string& inputKey) {
+//    std::string closestKey = "";
+//    for (std::map<std::string, float>::const_iterator it = myMap.begin(); it != myMap.end(); ++it) {
+//		if (it->first <= inputKey)
+//	    	closestKey = it->first;
+//		else
+//	    	break;
+//    }
+//    return closestKey;
+//}
+
+//std::string BitcoinExchange::findClosestDate(const std::map<std::string, float>& myMap, const std::string& input) const {
+
+//    std::string closestDate = findClosestKey(myMap, input);
+
+//    if (closestDate.empty())
+//		throw TooEarlyDate();
+//    return closestDate;
+//}
+
 bool	BitcoinExchange::getErr()const{return _err};
 
-std::string	BitcoinExchange::previousDate(std::string const &date){
-	
-}
-
-std::map<std::string, std::string>	BitcoinExchange::setData(){
-	std::ifstream file(DATA);
-	std::string line;
-
+std::ifstream	BitcoinExchange::checkFile(std::ifstream file){
 	file.seekg(0, std::ios::end); // seekg moves the pointer to the end of the file
 	if (file.is_open() == false)
 		return printErr(NOT_OPEN);
@@ -101,6 +116,12 @@ std::map<std::string, std::string>	BitcoinExchange::setData(){
 		return printErr(EMPTY_FIE);
 	else
 		file.seekg(0, std::ios::beg); // move pointer to begin file
+	return file;
+}
+
+std::map<std::string, std::string>	BitcoinExchange::setData(){
+	std::ifstream file = checkFile(DATA);
+	std::string line;
 	std::getline(file, line);
 	if (line != "date,exchange_rate")
 		return printErr(WRONG_FILE);
@@ -128,7 +149,39 @@ std::map<std::string, std::string>	BitcoinExchange::setData(){
 	return res;
 }
 
-std::map<std::string, std::string>	BitcoinExchange::getData() const{ return _data;}
+void	BitcoinExchange::execBtc(std::string const &file){
+	std::ifstream file = checkFile(file.c_str());
+	std::string line;
+	
+	std::getline(file, line);
+	if (line != "date | value")
+		throw BitcoinExchange::Err(WRONG_FILE);
 
-void	BitcoinExchange::execBtc(std::string const & file);
+	size_t	del;
+	std::string	date;
+	std::string val;
+	std::string	toChang;
+	double		res;
 
+	while (std::getline(file, line)){
+		del = line.find('|');
+		date = line.substr(0, del - 1);
+		line[del + 1] ?	val = line.substr(del + 1) : val = NULL;
+		if (del == std::string::npos || isValidDate(date) == false
+			|| val.empty() || isValidVal(val) == false)
+		{
+			std::cout << "Error: bad input => " line << std::endl;
+			continue;
+		}
+		toChang = getVal(date);
+		res = strtod(toChang.c_str(), NULL) * strtod(val.c_str(), NULL);
+		if (final < 0)
+			std::cout << "Error: not a positive number." << std::endl;
+		else if (res > std::numeric_limits<int>::max())
+			std::cout << "Error: too large a number." << std::endl;
+		else {
+			std::cout << line << " * " << toChang << " = " << round_up(res, 2) << std::endl;
+		}
+	}
+	file.close();
+}
