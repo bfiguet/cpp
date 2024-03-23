@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:51:14 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/22 15:30:43 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/23 18:49:46 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 #include <algorithm>
 #include <fstream>
 #include <sstream>
+#include <iomanip> 
+#include <limits>
 
-#define DATA "data.csv"
-//#define SEP ","
-#define PIPE "|"
+# define DATA "data.csv"
 
 #define ERR_ARG					"Need 1 argument like ./btc input.txt"
 #define	EMPTY_FIE				"File is empty"
@@ -32,10 +32,6 @@
 #define INVALID_DATE			"invalid date in file"
 #define NOT_OPEN				"File couldn't be opened"
 #define BAD_INPUT				"bad file input"
-//#define NO_DATE					"no data for this date"
-//#define NEG_NUM					"not a positive number"
-//#define TOO_LARGE				"too large a number"
-
 class BitcoinExchange
 {
 private:
@@ -45,11 +41,11 @@ private:
 	bool								isValidDate(std::string const &date);
 	bool								isValidVal(std::string const &val);
 	std::string							getVal(std::string const &date);
-	//std::string							previousDate(std::string const & date);					
-	void								printErr(std::string str);
+	void								checkFile(std::string file);
+	void								printErr(const char* str);
 public:
 	BitcoinExchange();
-	BitcoinExchange(BitcoinExchange const &copy);
+	BitcoinExchange(BitcoinExchange const &cpy);
 	~BitcoinExchange();
 
 	BitcoinExchange & 					operator=(BitcoinExchange const &src);
@@ -60,8 +56,11 @@ public:
 	bool								getErr()const;
 
 	class Err: public std::exception{
+		private:
+			const char*	_str;
 		public:
-			const char* what() const throw(){return std::string;};
+			Err(const char* str): _str(str){};
+			const char* what() const throw(){return _str;};
 	};
 };
 
