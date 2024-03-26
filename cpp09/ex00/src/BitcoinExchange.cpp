@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:27:42 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/23 18:51:39 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/26 12:20:35 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,10 @@ bool	BitcoinExchange::isValidDate(std::string const &date){
 }
 
 bool	BitcoinExchange::isValidVal(std::string const &val){
-	if (isdigit(atoi(val.c_str())))
-		return true;
-	return false;
+	std::istringstream iss(val);
+	float n;
+	iss >> n;
+	return iss.eof() && !iss.fail();
 }
 
 std::map<std::string, std::string>	BitcoinExchange::getData() const{ return _data;}
@@ -109,11 +110,7 @@ std::map<std::string, std::string>	BitcoinExchange::setData(){
 	std::string line;
 	std::getline(file, line);
 	if (line != "date,exchange_rate")
-	{
 		printErr(WRONG_FILE);
-		//_err = true;
-		//throw BitcoinExchange::Err(WRONG_FILE);
-	}
 	size_t del;
 	std::string date;
 	std::string val;
@@ -127,8 +124,10 @@ std::map<std::string, std::string>	BitcoinExchange::setData(){
 		if (date.empty() ||  isValidDate(date) == false)
 			printErr(INVALID_DATE);
 		val = line.substr(del + 1);
-		if (val.empty() || isValidVal(val) == false)
+		if (!isValidVal(val) )
 			printErr(INVALID_VAL);
+		if (atof(val.c_str()) < 0)
+			printErr(NEG_VAL);
 		res.insert(std::make_pair(date, val));
 	}
 	if (res.size() < 1)
@@ -145,7 +144,6 @@ void	BitcoinExchange::execBtc(std::string const &fileName){
 	std::getline(file, line);
 	if (line != "date | value")
 		throw BitcoinExchange::Err(WRONG_FILE);
-
 	size_t	del;
 	std::string	date;
 	std::string val;
@@ -156,18 +154,20 @@ void	BitcoinExchange::execBtc(std::string const &fileName){
 		del = line.find('|');
 		date = line.substr(0, del - 1);
 		line[del + 1] ?	val = line.substr(del + 1) : val = "";
-		if (del == std::string::npos || isValidDate(date) == false
-			|| val.empty() || isValidVal(val) == false)
-		{
+		if (isValidDate(date) == false){
+			std::cout << INVALID_DATE << " " << line << std::endl;
+			continue;
+		}
+		if (del == std::string::npos || val.empty() || isValidVal(val) == false){
 			std::cout << "Error: bad input => " << line << std::endl;
 			continue;
 		}
 		toChang = getVal(date);
 		res = strtod(toChang.c_str(), NULL) * strtod(val.c_str(), NULL);
 		if (res < 0)
-			std::cout << "Error: not a positive number." << std::endl;
+			std::cout << "Error: not positive number." << std::endl;
 		else if (res > std::numeric_limits<int>::max())
-			std::cout << "Error: too large a number." << std::endl;
+			std::cout << "Error: too large number." << std::endl;
 		else {
 			std::cout << line << " * " << toChang << " = " << std::setprecision(2) << res << std::endl;
 		}

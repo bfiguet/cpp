@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:55:23 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/21 19:11:03 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/24 16:16:45 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int ac, char **av){
 		BitcoinExchange btc;
 		if (btc.getErr() == false){
 			try {
-				btc.executebtc(av[1]);
+				btc.execBtc(av[1]);
 			} catch (const std::exception& e){
 				std::cout << e.what() << std::endl;
 			}

@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:51:14 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/23 18:49:46 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/26 11:50:17 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 #define INVALID_DATE			"invalid date in file"
 #define NOT_OPEN				"File couldn't be opened"
 #define BAD_INPUT				"bad file input"
+#define NEG_VAL					"negative value infile"
 class BitcoinExchange
 {
 private:
