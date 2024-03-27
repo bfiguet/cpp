@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:50:01 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/27 10:40:41 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/03/27 11:18:39 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,10 @@ void	RPN::resolvOp(char* const av)const{
 
 	while (iss >> str)
 	{
+		//std::cout << "str=" << str << std::endl;
 		if (isdigit(str[0]) || (str[0] == '-' && str.size() > 1 && isdigit(str[1])))
-		{
-			std::cout << "isdigit str=" << str << std::endl;
 			stack.push(std::atoi(str.substr(0, 1).c_str()));
-		}else if (str[0] != '+' && str[0] != '-' && str[0] != '*' && str[0] != '/')
+		else if (str[0] != '+' && str[0] != '-' && str[0] != '*' && str[0] != '/')
 			throw RPN::Err("Invalid char");
 		else {
 			if (stack.size() >= 2){
@@ -40,7 +39,7 @@ void	RPN::resolvOp(char* const av)const{
 				stack.pop();
 				int	val2 = stack.top();
 				stack.pop();
-				std::cout << "val1=" << val1 << ", val2=" << val2 << std::endl;
+				//std::cout << "val1=" << val1 << ", val2=" << val2 << std::endl;
 				switch (str[0]){
 					case '+':
 						stack.push(val2 + val1);

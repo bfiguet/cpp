@@ -6,11 +6,11 @@
 #    By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/15 09:48:00 by bfiguet           #+#    #+#              #
-#    Updated: 2024/03/20 17:23:52 by bfiguet          ###   ########.fr        #
+#    Updated: 2024/03/27 11:20:19 by bfiguet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= ex02
+NAME		= PmergeMe
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -g3 -std=c++98
 
