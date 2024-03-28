@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -16,7 +17,7 @@ int main(int ac, char **av){
 	try{
 		PmergeMe pmergeme(ac, av);
 		pmergeme.vectorMethod();
-		pmergeme.listMethod(ac, av);
+		pmergeme.listMethod(av);
 	} catch (std::exception &e) {
 		std::cout << "Error: " << e.what() << std::endl;
 		return 1;
