@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 17:46:15 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/19 15:39:54 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/04/03 20:30:15 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 #define WHATEVER_HPP
 
 #include <iostream>
-#include <string>
 
 template<typename T>
-
 void	swap(T &s1, T &s2){
 	T s3;
 	s3 = s1;
@@ -26,14 +24,12 @@ void	swap(T &s1, T &s2){
 }
 
 template< typename T>
-
-T	min(T m1, T m2){
+T	min(T &m1, T &m2){
 	return m1 < m2 ? m1 : m2;
 }
 
 template<typename T>
-
-T	max(T ma1, T ma2){
+T	max(T &ma1, T &ma2){
 	return ma1 > ma2 ? ma1 : ma2;
 }
 

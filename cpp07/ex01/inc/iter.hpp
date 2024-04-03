@@ -6,25 +6,28 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:20:05 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/19 15:40:23 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/04/03 20:30:02 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ITER_HPP
 #define ITER_HPP
-#include <string>
 #include <iostream>
-//#include <cstring>
 
 template<typename T>
-
-void	Iter(T* tab, size_t len, void(*func)(T&)){
+void	iter(T* tab, const size_t len, void(*func)(T&)){
 	for (size_t i = 0; i < len; i++)
 		func(tab[i]);
 }
 
 template<typename T>
-void	print(T &val){
+void	iter(const T* tab, const size_t len, void(*func)(const T&)){
+	for (size_t i = 0; i < len; i++)
+		func(tab[i]);
+}
+
+template<typename T>
+void	printT(T &val){
 	std::cout << val << " .";
 }
 

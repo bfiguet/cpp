@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:58:21 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/19 15:32:45 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/04/03 20:26:31 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(void){
 	Array<int>		tab2(4);
 	Array<int>		tabCpy(tab2);
 
-	std::cout << "INT TAB1" << std::endl;
+	std::cout << "INT TAB2" << std::endl;
 	for (size_t	i = 0; i < tab2.size(); i++)
 	{
 		try
@@ -57,7 +57,7 @@ int main(void){
 	std::cout << "ERR INDEX TAB2[5]" << std::endl;
 	try
 	{
-		std::cout << tab2[-1] << std::endl;
+		std::cout << tab2[5] << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -117,5 +117,6 @@ int main(void){
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 	return 0;
 }
