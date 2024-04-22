@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:27:42 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/26 12:20:35 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/04/22 19:00:44 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ bool	BitcoinExchange::isValidDate(std::string const &date){
 		return false;
 	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
 		return false;
-	if (month == 2 && (year == 2016 || year == 2020 || year == 2024) && day > 29)
+	if (month == 2 && (year == 2012 || year == 2016 || year == 2020 || year == 2024) && day > 29)
 		return false;
-	if (month == 2 && (year != 2016 && year != 2020 && year != 2024) && day > 28)
+	if (month == 2 && (year != 2012 && year != 2016 && year != 2020 && year != 2024) && day > 28)
 		return false;
 	return true;
 }
@@ -162,12 +162,14 @@ void	BitcoinExchange::execBtc(std::string const &fileName){
 			std::cout << "Error: bad input => " << line << std::endl;
 			continue;
 		}
+		if (atof(val.c_str()) > 1000){
+			std::cout << "Error: max 1000 btc =>" << line << std::endl;
+			continue;
+		}
 		toChang = getVal(date);
 		res = strtod(toChang.c_str(), NULL) * strtod(val.c_str(), NULL);
 		if (res < 0)
 			std::cout << "Error: not positive number." << std::endl;
-		else if (res > std::numeric_limits<int>::max())
-			std::cout << "Error: too large number." << std::endl;
 		else {
 			std::cout << line << " * " << toChang << " = " << std::setprecision(2) << res << std::endl;
 		}
