@@ -6,7 +6,7 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 15:34:24 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/27 10:28:23 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/04/22 11:03:45 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ class RPN
 {
 private:
 	RPN();
+	RPN(RPN const & src);
+	RPN &operator=(RPN const & src);
 	void	resolvOp(char* const av)const;
 public:
 	RPN(int const ac, char* const val);

@@ -59,7 +59,7 @@ bool	BitcoinExchange::isValidDate(std::string const &date){
 		return false;
 	if (month == 2 && (year == 2016 || year == 2020 || year == 2024) && day > 29)
 		return false;
-	if (month == 2 && (year != 2016 || year != 2020 || year != 2024) && day > 28)
+	if (month == 2 && (year != 2016 && year != 2020 && year != 2024) && day > 28)
 		return false;
 	return true;
 }

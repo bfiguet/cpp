@@ -6,14 +6,17 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:50:01 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/27 11:18:39 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/04/22 11:08:02 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
 RPN::RPN(){}
-
+RPN::RPN(RPN const & src){*this = src;}
+RPN &RPN::operator=(RPN const & src){
+	(void) &src;
+	return *this;}
 RPN::RPN(int const ac, char* const av){
 	if (ac != 2)
 		throw RPN::Err("Error:  Invalid number of arguments.");
