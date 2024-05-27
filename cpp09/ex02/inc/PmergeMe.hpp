@@ -6,43 +6,31 @@
 /*   By: bfiguet <bfiguet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:26:57 by bfiguet           #+#    #+#             */
-/*   Updated: 2024/03/28 16:32:39 by bfiguet          ###   ########.fr       */
+/*   Updated: 2024/05/27 21:12:47 by bfiguet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PMERGEME_HPP
-# define PMERGEME_HPP
+#define PMERGEME_HPP
 
-#include <string>
+
 #include <iostream>
-#include <algorithm>
-#include <ctime>
-#include <vector>
-#include <list>
+#include <sstream>
+#include <string>
+
 
 class PmergeMe
 {
 private:
-	std::vector<int>	_before;
-	int					_size;
-	PmergeMe();
 	PmergeMe(PmergeMe const &src);
 	PmergeMe & operator=(PmergeMe const & src);
 
 public:
-	PmergeMe(int ac, char **av);
+	PmergeMe();
 	~PmergeMe();
 
-	void	vectorMethod();
-	void	listMethod(char **av);
-
-	class Err: public std::exception{
-		private:
-			const char*	_str;
-		public:
-			Err(const char* str): _str(str){};
-			const char* what() const throw(){return _str;};
-	};
+	template<typename T>
+	static void sort(T& container, const std::string& str);
 };
-
+#include "PmergeMe.tpp"
 #endif
